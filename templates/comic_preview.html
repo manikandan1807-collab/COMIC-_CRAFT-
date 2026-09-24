@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Comic Preview - ComicCraft</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #eef1f5;
+      padding: 30px 16px 60px;
+    }
+    .header {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+    .header h1 {
+      color: #1a2740;
+      margin-bottom: 4px;
+    }
+    .panel {
+      max-width: 700px;
+      margin: 0 auto 24px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+    .panel-header {
+      background: #eeeeee;
+      padding: 12px 18px;
+      font-weight: 700;
+      font-size: 15px;
+      color: #1a2740;
+    }
+    .panel img {
+      width: 100%;
+      display: block;
+    }
+    .panel-body {
+      padding: 16px 18px 20px;
+    }
+    .scene-description {
+      font-style: italic;
+      color: #555;
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+    .panel-text {
+      white-space: pre-wrap;
+      font-size: 14px;
+      color: #222;
+      line-height: 1.5;
+    }
+    .download-wrap {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .download-btn {
+      display: inline-block;
+      padding: 14px 26px;
+      background: #1565c0;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .download-btn:hover { background: #0d47a1; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>&#128444;&#65039; Your Comic Preview</h1>
+  </div>
+
+  {% for panel in layout %}
+  <div class="panel">
+    <div class="panel-header">Panel {{ panel.panel }}: {{ panel.title }}</div>
+    {% if panel.image_path %}
+      <img src="/{{ panel.image_path }}" alt="Panel {{ panel.panel }} illustration">
+    {% endif %}
+    <div class="panel-body">
+      {% if panel.scene_description %}
+        <p class="scene-description">{{ panel.scene_description }}</p>
+      {% endif %}
+      <div class="panel-text">{{ panel.text }}</div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <div class="download-wrap">
+    <a class="download-btn" href="{{ pdf_path }}" download>
+      &#128190; Download Your Comic as PDF
+    </a>
+  </div>
+</body>
+</html>

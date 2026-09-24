@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ComicCraft - Create Your Comic</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(rgba(20, 30, 60, 0.45), rgba(20, 30, 60, 0.45)),
+                  url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 40px 16px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      padding: 32px 36px;
+      width: 100%;
+      max-width: 420px;
+    }
+    .card h1 {
+      margin: 0 0 20px;
+      font-size: 22px;
+      color: #1a2740;
+      text-align: center;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin: 14px 0 6px;
+    }
+    input[type="text"], textarea, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #fafafa;
+      resize: vertical;
+    }
+    textarea { min-height: 70px; }
+    button {
+      width: 100%;
+      margin-top: 22px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1565c0;
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    button:hover { background: #0d47a1; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>&#128221; Create Your Comic</h1>
+    <form action="/generate" method="post">
+      <label for="prompt">Story Prompt</label>
+      <textarea id="prompt" name="prompt" placeholder="A brave fox exploring an enchanted forest." required></textarea>
+
+      <label for="character_name">Main Character Name</label>
+      <input type="text" id="character_name" name="character_name" placeholder="Finn" required>
+
+      <label for="setting">Setting</label>
+      <select id="setting" name="setting">
+        <option value="forest">Forest</option>
+        <option value="school">School</option>
+        <option value="space">Space</option>
+        <option value="city">City</option>
+      </select>
+
+      <label for="tone">Story Tone</label>
+      <select id="tone" name="tone">
+        <option value="light-hearted">Light-hearted</option>
+        <option value="dramatic">Dramatic</option>
+        <option value="poetic">Poetic</option>
+        <option value="funny">Funny</option>
+      </select>
+
+      <label for="style">Art Style</label>
+      <select id="style" name="style">
+        <option value="anime">Anime</option>
+        <option value="pixel art">Pixel Art</option>
+        <option value="comic book">Comic Book</option>
+        <option value="realistic">Realistic</option>
+      </select>
+
+      <button type="submit">Generate Comic</button>
+    </form>
+  </div>
+</body>
+</html>
